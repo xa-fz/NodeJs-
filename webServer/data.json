@@ -1,3 +1,6 @@
 {
-  ".3gp":"video/3gpp"
+  ".3gp":"video/3gpp",
+  ".html":"text/html",
+  ".zip":"application/zip",
+  ".json":"application/json"
 }

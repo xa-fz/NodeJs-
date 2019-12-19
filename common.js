@@ -4,6 +4,8 @@ var fs = require('fs');
 var path = require('path');
 var url = require('url');
 
+var getMimeFromFile = require('./webServer/factory.js');
+
 var app = http.createServer(function (req, res) {
     var pathName = url.parse(req.url).pathname;
 
@@ -12,7 +14,6 @@ var app = http.createServer(function (req, res) {
     }
  // 获取文件后缀名
     let extname = path.extname(pathName);
-
     if(pathName != '/favicon.ico'){// 过滤请求
         fs.readFile('webServer/'+pathName, (err, data) => {
             if(err){
@@ -27,7 +28,7 @@ var app = http.createServer(function (req, res) {
                 });
             }else{
                 // 获取文件类型
-                let mime = getMime(extname);
+                let mime = getMimeFromFile.getMimeFromFile(extname);
                 res.writeHead(200, {"Content-Type": mime+";charset=utf-8"});
                 res.write(data);
                 res.end();
