@@ -17,7 +17,7 @@ exports.getMimeFromFile = function (extname) {
     // });
 
     // 修改方法是是改成同步执行的readFileSync()
-    var data = fs.readFileSync('./webServer/data.json');
+    var data = fs.readFileSync('./webServer/statics/data.json');
     var jsonObj = JSON.parse(data.toString());
     return jsonObj[extname] || 'text/html';
 };
