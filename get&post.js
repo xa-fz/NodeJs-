@@ -23,7 +23,9 @@ var app = http.createServer(function (req, res) {
     }else if(pathname == '/dologin' && transMethod == 'get'){
         var doLoginPath = url.parse(req.url,true);
         console.log(doLoginPath.query);
-        res.end('登录成功');
+        if(doLoginPath.query.username=='admin' && doLoginPath.query.passwords=='123') {
+            res.end('登录成功');
+        }
     }else if(pathname == '/dologin' && transMethod == 'post'){
         var postStr = '';
          req.on('data', (postData)=>{
